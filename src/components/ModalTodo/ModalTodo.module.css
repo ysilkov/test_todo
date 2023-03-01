@@ -1,0 +1,46 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  overflow-y: auto;
+  background-color: var(--overlay-color);
+  height: 250px;
+  margin: 150px 300px;
+  background-color: white;
+}
+.hidden {
+  display: none;
+}
+.container_modal > h3 {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.description {
+  font-size: 14px;
+  text-align: left;
+  margin-left: 10px;
+}
+.description > p:first-child {
+  padding-bottom: 15px;
+  font-weight: bold;
+}
+.description > p:nth-child(2) {
+  padding-bottom: 60px;
+}
+.status {
+  margin-left: 10px;
+  font-size: 14px;
+  margin-bottom: 15px;
+  display: flex;
+}
+.status > p {
+  margin-right: 5px;
+}
+.button {
+  margin-left: 10px;
+}
+.button > button {
+  width: 70px;
+  height: 20px;
+}

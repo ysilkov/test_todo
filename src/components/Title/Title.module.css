@@ -1,0 +1,29 @@
+.main {
+  padding: 50px;
+  display: flex;
+  flex-direction: row;
+}
+.container_input {
+  margin-right: 100px;
+}
+.container_input > p {
+  margin-bottom: 10px;
+}
+.container_input > input {
+  padding: 5px;
+  width: 180px;
+  border-radius: 5px;
+}
+.container_button {
+  margin: 25px 0 0 20px;
+}
+.button {
+  padding: 8px;
+  border-radius: 5px;
+}
+.errorMessage {
+  color: red;
+}
+.input_error {
+  border-color: red;
+}

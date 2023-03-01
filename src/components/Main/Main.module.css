@@ -1,0 +1,33 @@
+table {
+  border-spacing: 0 0.5em;
+  width: 54%;
+  table-layout: fixed;
+  margin-left: 50px;
+}
+
+tr th {
+  padding: 10px 0;
+  background: rgb(245, 244, 244);
+}
+tr td:first-child {
+  margin-top: 100px;
+}
+tr td {
+  padding: 10px 0 10px 0px;
+  text-align: center;
+  background: rgb(163, 162, 162);
+}
+.title,
+.description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 5px;
+  cursor: pointer;
+}
+.id {
+  cursor: pointer;
+}
+input {
+  cursor: pointer;
+}
