@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import style from "./Main.module.css";
@@ -6,16 +6,20 @@ import { useDispatch } from "react-redux";
 import { changeStatusTodo, chooseTodo } from "../../store/todoReducer";
 import ModalTodo from "../ModalTodo/ModalTodo";
 
-const Main = () => {
+const Main = React.memo(function Main(props) {
   const todoList = useSelector((state: RootState) => state.todo.todoList);
   const [modalActive, setModalActive] = useState(false);
   const dispatch = useDispatch();
   const changeStatus = (id: number) => {
     dispatch(changeStatusTodo(id));
   };
-  const chooseTodoTable = (id: number) => {
+  let trRef = useRef<HTMLTableRowElement>(null);
+
+  const chooseTodoTable = () => {
+    const id = trRef.current?.id;
+
     !modalActive ? setModalActive(true) : setModalActive(false);
-    dispatch(chooseTodo(id));
+    dispatch(chooseTodo(Number(id)));
   };
   return (
     <>
@@ -34,24 +38,12 @@ const Main = () => {
             <th>STATUS</th>
           </tr>
         </thead>
-        <tbody id="todo-table">
+        <tbody id="todo-table" onClick={chooseTodoTable}>
           {todoList.map((todo) => (
-            <tr key={todo.id} id={todo.id.toString()}>
-              <td className={style.id} onClick={() => chooseTodoTable(todo.id)}>
-                {todo.id}
-              </td>
-              <td
-                className={style.title}
-                onClick={() => chooseTodoTable(todo.id)}
-              >
-                {todo.title}
-              </td>
-              <td
-                className={style.description}
-                onClick={() => chooseTodoTable(todo.id)}
-              >
-                {todo.description}
-              </td>
+            <tr key={todo.id} id={todo.id.toString()} ref={trRef}>
+              <td className={style.id}>{todo.id}</td>
+              <td className={style.title}>{todo.title}</td>
+              <td className={style.description}>{todo.description}</td>
               <td className={style.status}>
                 <input
                   type="checkbox"
@@ -66,6 +58,6 @@ const Main = () => {
       <ModalTodo modalActive={modalActive} setModalActive={setModalActive} />
     </>
   );
-};
+});
 
 export default Main;

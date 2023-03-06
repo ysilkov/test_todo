@@ -24,6 +24,7 @@ export const Todo = createSlice({
       }
     },
     chooseTodo(state, action) {
+      console.log(action.payload)
       state.todo = state.todoList.filter((el) => el.id === action.payload);
     },
   },
