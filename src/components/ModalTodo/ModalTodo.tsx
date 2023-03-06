@@ -6,7 +6,6 @@ import style from "./ModalTodo.module.css";
 
 const ModalTodo = (props: ModalWindowProps) => {
   const todo = useSelector((state: RootState) => state.todo.todo);
-console.log(todo)
   return (
     <div className={props.modalActive ? style.modal : style.hidden}>
       {todo.map((el) => (
